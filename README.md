@@ -44,3 +44,12 @@ Additional information can be found at [Google Weather API Documentation/Set up 
 6. Copy the JSON file into the horizonBrief directory and rename it to `service_account.json`.
 7. Share your Google Calendar with the service account email (found in the JSON file under `client_email`, or in the Service account "Details" tab) with "See all event details" permission.
 
+## Service Setup
+1. If you want to run HorizonBrief as a service, **edit** and copy the provided `horizonBrief.service` file to `/etc/systemd/system/horizonBrief.service`. Make sure to change the `ExecStart` and `WorkingDirectory` paths to match your setup.
+2. Enable and start the service.
+
+```bash
+sudo cp horizonBrief.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now horizonBrief.service
+```
