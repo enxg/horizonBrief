@@ -3,6 +3,20 @@
 HorizonBrief is a personal assistant to brief you on your day, including weather updates at locations you care about and your calendar events.
 Powered by Google Gemini.
 
+## Demos
+<details>
+<summary>English Demo</summary>
+  
+https://github.com/user-attachments/assets/5da0683c-d796-4c0f-9cfb-b32c9f231d63
+</details>
+
+<details>
+<summary>Turkish Demo</summary>
+
+https://github.com/user-attachments/assets/b125c118-27c3-40dd-83b4-628d6c2e3df2
+</details>
+
+
 ## Setup
 1. Copy one of the example config files into `config.json` and fill in according to your preferences.
 2. Copy `.env.example` file into `.env` and fill in your API keys. Info on how to get API keys is written below. You can also set the `PORT` variable to change the port the server listens on (default is 3000).
