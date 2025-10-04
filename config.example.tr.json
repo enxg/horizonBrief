@@ -1,0 +1,42 @@
+{
+  "user":  {
+    "name": "Enes"
+  },
+  "locations": [
+    {
+      "name": "Ev",
+      "friendly_description": "Evim",
+      "latitude": 0.000000,
+      "longitude": 0.000000,
+      "notes": "Burası evim."
+    },
+    {
+      "name": "Yıldız Teknik Üniversitesi Davutpaşa Kampüsü",
+      "friendly_description": "Üniversitem",
+      "latitude": 41.028210,
+      "longitude": 28.890863,
+      "notes": "Sadece hafta içleri üniversiteye gidiyorum."
+    }
+  ],
+  "calendars": [
+    {
+      "id": "****@gmail.com",
+      "notes": "Genel takvim"
+    },
+    {
+      "id": "****@group.calendar.google.com",
+      "notes": "YTÜ Ders Programım. Konum adında Sanal, Online veya benzeri geçiyosa bunlar online canlı derstir, evden girilir. Yazmıyorsa konum bilgisindeki kısım kampüs içi lokasyondur. Örnek format: EEF-D-B11[119]. EEF kısmı fakültedir, burada Elektrik-Elektronik Fakültesi demektir. D kısmı fakülte içi bloktur, burada D Bilgisayar Mühendisliğinin bulunduğu bloktur. B11 ise dersliğin kodudur. [119] ise kapasite olup bu bilgi konum bilgisinde hiç olmayadabilir. Formatın tamamen buna uygunluğu garanti değildir. Ders adlarında G ile başlayan bir bölüm varsa bu grup numarasıdır, lütfen bunu cevabında belirtme. Online olmayan derslerim Davutpaşa Kampüsünde olur. Ayrıca kampüste olan derslerin arkasından online ders gelebilir, bu nedenle online derslere kampüste boş bir sınıfta ya da kütüphanede girdiğim oluyor."
+    }
+  ],
+  "gemini": {
+    "text": {
+      "model": "gemini-flash-latest",
+      "prompt": "Kullanıcıya güne başlarken gün ile ilgili bilgiler vererek yardımcı olmakla görevli bir asistansın. Tarih ve saate; kullanıcının bilgilerine, lokasyonlarına, bu lokasyonlardaki hava durumu bilgilerine ve takvimlerine erişimin var. Bunları kullanarak kullanıcıya gününe yardımcı olacak bilgiler vereceksin. Kullanıcıyı saate göre kısaca karşılayarak başlayabilirsin. Kullanıcının işine yarayacak önerilerde bulunabilirsin. Kullanıcının takviminde o gün için planlanmış etkinlikler varsa bunları hatırlatabilirsin. Kullanıcının lokasyonlarına göre hava durumu bilgilerini vermelisin (kullanıcının takviminde bir etkinlik olmasa bile dışarıya çıkma ihtimali olabilir). Kullanıcıya hava durumuna göre giyim ve şemsiye konusunda tavsiye verebilirsin. Kullanıcıya günün nasıl geçeceği ile ilgili olumlu ve motive edici ifadelerde bulunabilirsin. Cümlelerin kısa ve öz olsun. Çok uzun cümleler kurma. Gereksiz yere detaylara girme. Cümlelerinde samimi ve sıcak bir dil kullan. Mizah katmaktan çekinme. Cevabın Türkçe olacak. Cevabın kullanıcıya sesli olarak okunacağından dolayı yazım kurallarına dikkat et, okumaya uygun akışta bir cevap yaz (özellikle başlıklardan kaçın, ayrıca parantez içi bilgiler de cevabın sese çevrilirken akışı bozabilir) ve çok uzun bir cevap verme. Veriler sana JSON formatında verilecek. Hava durumu verisi sonraki 24 saati içermekte, lütfen tarih ve saat bilgilerini dikkate al ve sadece o gün için olan verileri kullan. Hava durumlarını fark var ise lokasyonlara ayrı ayrı vermen faydalı olabilir. Lokasyon verilerindeki friendly_description gibi alanlar senin lokasyon hakkında daha doğal cevap verebilmen için var, lütfen bu alanları direkt olarak cevabın içine koyma. Takvim verisi sadece o gün için olan etkinlikleri içermekte."
+    },
+    "voice": {
+      "model": "gemini-2.5-flash-preview-tts",
+      "prompt": "Sıcak, samimi ve enerjik bir ses tonuyla oku: ",
+      "voice": "Zephyr"
+    }
+  }
+}

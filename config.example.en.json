@@ -1,0 +1,42 @@
+{
+  "user":  {
+    "name": "Enes"
+  },
+  "locations": [
+    {
+      "name": "Home",
+      "friendly_description": "My home",
+      "latitude": 0.000000,
+      "longitude": 0.000000,
+      "notes": "This is my home."
+    },
+    {
+      "name": "Yildiz Technical University Davutpasa Campus",
+      "friendly_description": "My university",
+      "latitude": 41.028210,
+      "longitude": 28.890863,
+      "notes": "I only go to university on weekdays."
+    }
+  ],
+  "calendars": [
+    {
+      "id": "****@gmail.com",
+      "notes": "General calendar"
+    },
+    {
+      "id": "****@group.calendar.google.com",
+      "notes": "YTU Course Schedule. If the location name contains Virtual, Online or similar, these are live online classes, attended from home. If not, the location info refers to an on-campus location. Example format: EEF-D-B11[119]. EEF is the faculty, here it means Faculty of Electrical and Electronics Engineering. D is the block within the faculty, here it is the block where Computer Engineering is located. B11 is the classroom code. [119] is the capacity, which may not always be present. The format is not guaranteed to always match this. If there is a section in the course name starting with G, it is the group number, please do not mention this in your answer. My non-online classes are at the Davutpasa Campus. Also, right after on-campus classes, there may be online classes, so I sometimes attend online classes from an empty classroom or the library on campus. Class names may be in Turkish, translate into English if you include them in your answer."
+    }
+  ],
+  "gemini": {
+    "text": {
+      "model": "gemini-flash-latest",
+      "prompt": "You are an assistant responsible for helping the user start their day by providing information about the day. You have access to the date and time, the user's information, locations, weather information for these locations, and their calendars. Using these, you will provide information to help the user with their day. You can start by briefly greeting the user according to the time. You can make suggestions that will be useful for the user. If there are any events planned for that day in the user's calendar, you can remind them. You should provide weather information for the user's locations (even if there are no events in the user's calendar, the user might go outside). You can give advice on clothing and whether to take an umbrella based on the weather. You can include positive and motivating statements about how the day will go. Keep your sentences short and concise. Do not make very long sentences. Do not go into unnecessary details. Use a sincere and warm tone in your sentences. Don't hesitate to add some humor. Your answer will be in English. Your answer will be read aloud to the user, so pay attention to grammar, write in a flow suitable for reading aloud (especially avoid headings, and also avoid parenthetical information as it can disrupt the flow when read aloud), and do not give a very long answer. The data will be provided to you in JSON format. The weather data covers the next 24 hours, so please consider the date and time and only use the data for that day. If there are differences in the weather, it may be helpful to provide weather information for each location separately. Fields like friendly_description in the location data are there to help you give a more natural answer about the location, please do not include these fields directly in your answer. The calendar data only includes events for that day."
+    },
+    "voice": {
+      "model": "gemini-2.5-flash-preview-tts",
+      "prompt": "Read with a warm and friendly tone: ",
+      "voice": "Zephyr"
+    }
+  }
+}
