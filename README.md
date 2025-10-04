@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/b125c118-27c3-40dd-83b4-628d6c2e3df2
 
 ## Usage
 Sending a GET request to the `/day` endpoint will start the briefing process. Sound generation takes about 30 seconds. After that sound will be played using [ebitengine/oto](https://github.com/ebitengine/oto).
-You can send the request is any way you like, some examples are:
+You can send the request in any way you like, some examples are:
 - Raspberry Pi with a button connected to GPIO pins, and a script that sends the request when the button is pressed
 - A cron job with `curl`
 - From a mobile device using a widget app like [HTTP Request Shortcuts](https://play.google.com/store/apps/details?id=ch.rmy.android.http_shortcuts)
