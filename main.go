@@ -138,6 +138,19 @@ func main() {
 		},
 	}
 
+	op := &oto.NewContextOptions{
+		SampleRate:   24000,
+		ChannelCount: 1,
+		Format:       oto.FormatSignedInt16LE,
+	}
+
+	otoCtx, readyChan, err := oto.NewContext(op)
+	if err != nil {
+		panic("oto.NewContext failed: " + err.Error())
+	}
+
+	<-readyChan
+
 	app.Get("/day", func(c fiber.Ctx) error {
 		ti := time.Now().In(time.Local)
 		//ti := time.Unix(1759841121, 0).In(time.Local) // For testing purposes
@@ -240,21 +253,7 @@ func main() {
 
 			meta := voice.Candidates[0].Content.Parts[0].InlineData
 
-			op := &oto.NewContextOptions{}
-			op.SampleRate = 24000
-			op.ChannelCount = 1
-			op.Format = oto.FormatSignedInt16LE
-
 			audioReader := bytes.NewReader(meta.Data)
-
-			println("Parsing audio...")
-
-			otoCtx, readyChan, err := oto.NewContext(op)
-			if err != nil {
-				panic("oto.NewContext failed: " + err.Error())
-			}
-
-			<-readyChan
 
 			println("Playing audio...")
 
