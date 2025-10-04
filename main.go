@@ -204,46 +204,50 @@ func main() {
 			})
 		}
 
-		aiDataText, err := sonic.Marshal(aiData)
+		err := c.SendString("Generating audio")
 		if err != nil {
 			return err
 		}
-
-		text, err := gen.Models.GenerateContent(
-			ctx,
-			config.Gemini.Text.Model,
-			genai.Text(string(aiDataText)),
-			textConfig,
-		)
-		if err != nil {
-			return err
-		}
-
-		voice, err := gen.Models.GenerateContent(
-			ctx,
-			config.Gemini.Voice.Model,
-			genai.Text(config.Gemini.Voice.Prompt+text.Text()),
-			voiceConfig,
-		)
-		if err != nil {
-			return err
-		}
-
-		meta := voice.Candidates[0].Content.Parts[0].InlineData
-
-		op := &oto.NewContextOptions{}
-		/*_, err = fmt.Sscanf(meta.MIMEType, "audio/L16;codec=pcm;rate=%d", &op.SampleRate)
-		if err != nil {
-			return err
-		}*/
-		op.SampleRate = 24000
-		op.ChannelCount = 1
-		op.Format = oto.FormatSignedInt16LE
-
-		audioReader := bytes.NewReader(meta.Data)
 
 		go func() {
-			println("Preparing audio...")
+			aiDataText, err := sonic.Marshal(aiData)
+			if err != nil {
+				log.Printf("Unable to marshal AI data: %v", err)
+				return
+			}
+
+			text, err := gen.Models.GenerateContent(
+				ctx,
+				config.Gemini.Text.Model,
+				genai.Text(string(aiDataText)),
+				textConfig,
+			)
+			if err != nil {
+				log.Printf("Unable to generate text: %v", err)
+				return
+			}
+
+			voice, err := gen.Models.GenerateContent(
+				ctx,
+				config.Gemini.Voice.Model,
+				genai.Text(config.Gemini.Voice.Prompt+text.Text()),
+				voiceConfig,
+			)
+			if err != nil {
+				log.Printf("Unable to generate voice: %v", err)
+				return
+			}
+
+			meta := voice.Candidates[0].Content.Parts[0].InlineData
+
+			op := &oto.NewContextOptions{}
+			op.SampleRate = 24000
+			op.ChannelCount = 1
+			op.Format = oto.FormatSignedInt16LE
+
+			audioReader := bytes.NewReader(meta.Data)
+
+			println("Parsing audio...")
 
 			otoCtx, readyChan, err := oto.NewContext(op)
 			if err != nil {
@@ -264,7 +268,7 @@ func main() {
 			defer player.Close()
 		}()
 
-		return c.JSON(text)
+		return nil
 	})
 
 	app.Listen(":" + port)
