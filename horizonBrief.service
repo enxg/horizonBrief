@@ -1,0 +1,12 @@
+[Unit]
+Description=HorizonBrief
+After=network.target
+
+[Service]
+ExecStart=/home/user/horizonBrief/horizonBrief
+WorkingDirectory=/home/user/horizonBrief
+Type=exec
+Restart=always
+
+[Install]
+WantedBy=default.target
